@@ -51,7 +51,7 @@ jobs:
     - name: Build Solution
       if: ${{ matrix.language }} == 'csharp'
       run: |
-          msbuild WebGoat.NET.sln /p:platform="Any CPU" /p:configuration="Release"
+          msbuild.exe WebGoat.NET.sln /p:platform="Any CPU" /p:configuration="Release"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
