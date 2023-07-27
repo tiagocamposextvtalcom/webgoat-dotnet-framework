@@ -36,10 +36,13 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
-    
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
 
+    - name: Restore Packages
+      run: nuget restore Sandbox.sln
+
+    - name: Build Solution
+      run: |
+          msbuild.exe Sandbox.sln /p:platform="Any CPU" /p:configuration="Release"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
