@@ -45,11 +45,11 @@ jobs:
         languages: ${{ matrix.language }}
 
     - name: Restore Package
-      if: ${{ matrix.language }} == 'csharp'
+      if: matrix.language == 'csharp'
       run: nuget restore WebGoat.NET.sln
 
     - name: Build Solution
-      if: ${{ matrix.language }} == 'csharp'
+      if: matrix.language  == 'csharp'
       run: |
           msbuild.exe WebGoat.NET.sln /p:platform="Any CPU" /p:configuration="Release"
 
